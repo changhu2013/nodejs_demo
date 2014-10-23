@@ -11,13 +11,10 @@ app.get('/', function(req, res){
 
 //监听当有一个客户端连接上以后处理
 io.on('connection', function(socket){
-
     console.log('一个用户端连接上 ' + socket);
-
     socket.on('disconnect', function(){
         console.log('一个用户断开连接');
     });
-    
     socket.on('chat', function(msg){
         console.log('消息: ' + msg);
         io.emit('chat', msg);
